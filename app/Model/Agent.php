@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Agent extends Model
 {
     //
+    protected $fillable = ['name', 'phone', 'mobile_phone', 'address', 'city', 'state', 'country', 'path'];
+    protected $hidden = ['created_at', 'updated_at'];
+    
     public function agentRepresentatives()
     {
         return $this->hasMany('App\Model\AgentRepresentative');
