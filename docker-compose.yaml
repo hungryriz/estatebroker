@@ -1,0 +1,51 @@
+version: '3.3'
+services:
+  php-fpm:
+    build: 
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      args:
+        GIT_HUB_REPOSITORY: github.com/magentoguru/estatebroker.git
+        GIT_HUB_USER: magentoguru
+        GIT_HUB_TOKEN: 42dc148a4d64ff92b4a97c7d3befe98637888b52
+    container_name: php-fpm
+    image: php-fpm
+    env_file: 
+      - ./docker.env
+    volumes:
+      - ./:/var/www/html/
+    links:
+      - mariadb
+      - nginx
+    networks:
+      - laravel-network
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+     - "8000:80"
+     - "4430:443"
+    volumes:
+      - ./:/var/www/html/
+    networks:
+      - laravel-network
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    env_file: 
+      - ./docker.env
+    ports:
+      - "33060:3306"
+    environment:
+      MYSQL_DATABASE: estatebroker
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - mariadb:/var/lib/mysql/
+    networks:
+      - laravel-network
+volumes:
+  mariadb:
+    driver: local
+networks:
+  laravel-network:
+    driver: bridge

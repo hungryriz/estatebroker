@@ -1,0 +1,57 @@
+# syntax = docker/dockerfile:1.0-experimental
+version: '3.3'
+services:
+  php-fpm:
+    image: php-fpm
+    build: ./php/Dockerfile  
+    container_name: php-fpm
+    secrets:
+      - git_name
+      - git_password
+      - git_url
+    volumes:
+      - ./:/var/www/html/
+    links:
+      - mariadb
+      - nginx
+    networks:
+      - laravel-network
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+     - "80:80"
+     - "443:443"
+    volumes:
+      - ./:/var/www/html/
+    networks:
+      - laravel-network
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    env_file: 
+      - ./docker.env
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: estatebroker
+      MYSQL_ROOT_PASSWORD:
+    volumes:
+      - mariadb:/var/lib/mysql/
+    networks:
+      - laravel-network
+volumes:
+  mariadb:
+    driver: local
+secrets:
+  git_name:
+    file: ./secrets/git_name.txt
+  git_password:
+    file: ./secrets/git_password.txt
+  git_url:
+    file: ./secrets/git_url.txt
+
+networks:
+  laravel-network:
+    external:
+      name: bridge
