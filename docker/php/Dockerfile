@@ -60,6 +60,6 @@ USER laravel
 # Copy existing application directory permissions
 # COPY --chown=laravel:laravel . /var/www
 
-# Expose port 9000 and start php-fpm server
-EXPOSE 9000
+# Expose port 9010 and start php-fpm server
+EXPOSE 9010
 ENTRYPOINT ["sh","./docker/php/docker-entrypoint.sh"]

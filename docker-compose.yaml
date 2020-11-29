@@ -27,6 +27,7 @@ services:
      - "4430:443"
     volumes:
       - ./:/var/www/html/
+      - ./docker/nginx/conf.d/laravel.conf:/etc/nginx/conf.d/laravel.conf
     networks:
       - laravel-network
   mariadb:
@@ -36,6 +37,8 @@ services:
       - ./docker.env
     ports:
       - "33060:3306"
+    volumes:
+      - ./docker/mariadb/conf.d/laravel.cnf:/etc/mysql/conf.d/laravel.cnf
     environment:
       MYSQL_DATABASE: estatebroker
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
