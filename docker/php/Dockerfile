@@ -46,18 +46,16 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 
 # Copy existing application directory contents
-# COPY . /var/www/html
-# RUN --mount=type=secret,id=git_password cat /run/secrets/git_password
-# RUN --mount=type=secret,id=git_url cat /run/secrets/git_url
-# RUN mkdir /var/laravel && cd /var/laravel && git clone https://${GIT_HUB_USER}:${GIT_HUB_TOKEN}@${GIT_HUB_REPOSITORY} .
-COPY ./* /var/www/html/
-# Add user for laravel application
+
+COPY . /var/www/html
+RUN mkdir /var/laravel
+RUN cp -r /var/www/html/* /var/laravel/ && cd /var/laravel && rm -rf vendor && composer install
+# Add user for laravel application && composer install
 RUN groupadd -g 1000 laravel
 RUN useradd -u 1000 -ms /bin/bash -g laravel laravel
 RUN chown -R laravel:laravel /var/www/
-#USER laravel
+USER laravel
 #RUN ["chmod", "+x", "./docker-entrypoint.sh"]
-#RUN /bin/bash -c ./docker-entrypoint.sh
 
 # Copy existing application directory permissions
 # COPY --chown=laravel:laravel . /var/www
@@ -65,5 +63,3 @@ RUN chown -R laravel:laravel /var/www/
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 ENTRYPOINT ["sh","./docker/php/docker-entrypoint.sh"]
-
-

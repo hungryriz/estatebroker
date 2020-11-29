@@ -4,10 +4,10 @@ services:
     build: 
       context: .
       dockerfile: ./docker/php/Dockerfile
-      args:
-        GIT_HUB_REPOSITORY: github.com/magentoguru/estatebroker.git
-        GIT_HUB_USER: magentoguru
-        GIT_HUB_TOKEN: 42dc148a4d64ff92b4a97c7d3befe98637888b52
+      # args:
+      #   GIT_HUB_REPOSITORY: github.com/magentoguru/estatebroker.git
+      #   GIT_HUB_USER: magentoguru
+      #   GIT_HUB_TOKEN: 42dc148a4d64ff92b4a97c7d3befe98637888b52
     container_name: php-fpm
     image: php-fpm
     env_file: 
