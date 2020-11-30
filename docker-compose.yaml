@@ -14,6 +14,7 @@ services:
       - ./docker.env
     volumes:
       - ./:/var/www/html/
+      - ./docker/php/php-fpm.d/laravel.conf:/usr/local/etc/php-fpm.d/laravel.conf
     links:
       - mariadb
     networks:
