@@ -16,7 +16,6 @@ services:
       - ./:/var/www/html/
     links:
       - mariadb
-      - nginx
     networks:
       - laravel-network
   nginx:
@@ -28,6 +27,8 @@ services:
     volumes:
       - ./:/var/www/html/
       - ./docker/nginx/conf.d/laravel.conf:/etc/nginx/conf.d/laravel.conf
+    links:
+      - php-fpm
     networks:
       - laravel-network
   mariadb:

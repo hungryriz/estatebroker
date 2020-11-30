@@ -48,8 +48,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Copy existing application directory contents
 
 COPY . /var/www/html
-RUN mkdir /var/laravel
-RUN cp -r /var/www/html/* /var/laravel/ && cd /var/laravel && rm -rf vendor && composer install
+# RUN mkdir /var/laravel
+RUN composer self-update --1
+# RUN cp -r /var/www/html/* /var/laravel/ && cd /var/laravel && rm -rf vendor && composer install
 # Add user for laravel application && composer install
 RUN groupadd -g 1000 laravel
 RUN useradd -u 1000 -ms /bin/bash -g laravel laravel
