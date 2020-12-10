@@ -52,15 +52,15 @@ COPY . /var/www/html
 RUN composer self-update --1
 # RUN cp -r /var/www/html/* /var/laravel/ && cd /var/laravel && rm -rf vendor && composer install
 # Add user for laravel application && composer install
-RUN groupadd -g 1000 laravel
-RUN useradd -u 1000 -ms /bin/bash -g laravel laravel
-RUN chown -R laravel:laravel /var/www/
-USER laravel
+RUN groupadd -g 1000 www
+RUN useradd -u 1000 -ms /bin/bash -g www www
+RUN chown -R www:www /var/www/
+USER www
 #RUN ["chmod", "+x", "./docker-entrypoint.sh"]
 
 # Copy existing application directory permissions
 # COPY --chown=laravel:laravel . /var/www
 
 # Expose port 9010 and start php-fpm server
-EXPOSE 9010
+EXPOSE 9000
 ENTRYPOINT ["sh","./docker/php/docker-entrypoint.sh"]
