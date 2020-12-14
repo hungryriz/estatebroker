@@ -11,17 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/home', function () {
-    return redirect('/dashboard');
-});
+Route::get('/', 'WebControllers\HomeController@index');
+
+
+// Route::get('/home', function () {
+//     return redirect('/dashboard');
+// });
 
 
 
 //  Route::get('login', 'Auth\LoginController@index')->name('login');
 Auth::routes();
 
-//Route::get('api/activity', 'ApiControllers/ActivityController@index')->name('api/activity');
+//Route::get('api/activity', 'ApiControllers\ActivityController@index')->name('api/activity');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

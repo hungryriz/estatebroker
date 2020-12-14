@@ -33,7 +33,10 @@ RUN apt-get update -y \
     git \
     curl \
     libwebp-dev \
-    apt-utils
+    apt-utils \
+    nodejs \
+    npm \
+    yarn
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 

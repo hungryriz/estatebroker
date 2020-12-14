@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
-    //
+    // Activity is a meeting on agents shop, on the property or any other activity related to business.
     public function party() 
     {
     	return $this->belongsTo('App\Model\Party');

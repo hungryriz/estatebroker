@@ -17,19 +17,19 @@
 
 
 
-Route::get('/', function () {
-    return view('admin');
-});
-Route::resource('activities', 'AdminControllers\ActivityController');
-Route::resource('agents', 'AdminControllers\AgentController');
-Route::resource('deals', 'AdminControllers\DealController');
-Route::resource('interests', 'AdminControllers\InterestController');
-Route::resource('listings', 'AdminControllers\ListingController');
-Route::resource('parties', 'AdminControllers\PartyController');
+// Route::get('/', function () {
+//     return view('admin');
+// });
+// Route::resource('activities', 'AdminControllers\ActivityController');
+// Route::resource('agents', 'AdminControllers\AgentController');
+// Route::resource('deals', 'AdminControllers\DealController');
+// Route::resource('interests', 'AdminControllers\InterestController');
+// Route::resource('listings', 'AdminControllers\ListingController');
+// Route::resource('parties', 'AdminControllers\PartyController');
 
 
 
 //  Route::get('login', 'Auth\LoginController@index')->name('login');
-Auth::routes();
+//Auth::routes();
 
 //Route::get('api/activity', 'ApiControllers/ActivityController@index')->name('api/activity');
