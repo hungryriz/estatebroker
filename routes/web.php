@@ -29,6 +29,3 @@ Auth::routes();
 
 //Route::get('api/activity', 'ApiControllers\ActivityController@index')->name('api/activity');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
