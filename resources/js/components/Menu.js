@@ -13,8 +13,8 @@ function Menu(props) {
     const user = useSelector(store => store.user);
     const dispatch = useDispatch();
     useEffect(() => {
-        console.log(user);
-        console.log('menu');
+        // console.log(user);
+        // console.log('menu');
     });
     return (
         <Router>
