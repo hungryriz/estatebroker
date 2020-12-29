@@ -32,5 +32,9 @@ Auth::routes();
 // Route::any( '/', function() {
 //     return view('home');
 // });
-Route::view('/{path?}', 'home');
+// Route::view('*', 'home');
+Route::get("{path?}", "WebControllers\HomeController@index")->where('path', '.+');
+// Route::any( '(.*)', function( $page ){
+//     return view('home');
+// });
 // Route::get('/', 'WebControllers\HomeController@index')->name('home');

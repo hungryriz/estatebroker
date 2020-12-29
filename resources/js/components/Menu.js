@@ -8,6 +8,7 @@ import Contact from '../pages/Contact';
 import Login from '../pages/Login';
 import Registration from '../pages/Registration';
 import { userLogout } from '../redux/actions/authActions.js';
+import Dashboard from '../pages/Dashboard';
 
 function Menu(props) {
     const user = useSelector(store => store.user);
@@ -25,6 +26,9 @@ function Menu(props) {
                     </li>
                     <li>
                         <Link to="/contactus">Contact Us</Link>
+                    </li>
+                    <li>
+                        <Link to="/dashboard">Dashboard</Link>
                     </li>
                         {
                             !user.loggedin ? 
@@ -57,6 +61,9 @@ function Menu(props) {
                 </Route>
                 <Route path="/registration">
                     <Registration />
+                </Route>
+                <Route path="/dashboard">
+                    <Dashboard />
                 </Route>
                 <Route path="/">
                     <Home />

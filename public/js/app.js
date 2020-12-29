@@ -72958,6 +72958,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pages/Login */ "./resources/js/pages/Login.js");
 /* harmony import */ var _pages_Registration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../pages/Registration */ "./resources/js/pages/Registration.js");
 /* harmony import */ var _redux_actions_authActions_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../redux/actions/authActions.js */ "./resources/js/redux/actions/authActions.js");
+/* harmony import */ var _pages_Dashboard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../pages/Dashboard */ "./resources/js/pages/Dashboard/index.js");
+
 
 
 
@@ -72994,7 +72996,13 @@ function Menu(props) {
     /*#__PURE__*/
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
       to: "/contactus"
-    }, "Contact Us")), !user.loggedin ?
+    }, "Contact Us")),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      to: "/dashboard"
+    }, "Dashboard")), !user.loggedin ?
     /*#__PURE__*/
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
     /*#__PURE__*/
@@ -73041,6 +73049,12 @@ function Menu(props) {
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Registration__WEBPACK_IMPORTED_MODULE_7__["default"], null)),
     /*#__PURE__*/
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+      path: "/dashboard"
+    },
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Dashboard__WEBPACK_IMPORTED_MODULE_9__["default"], null)),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
       path: "/"
     },
     /*#__PURE__*/
@@ -73073,6 +73087,481 @@ function Contact() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Contact);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Dashboard/Activities.js":
+/*!****************************************************!*\
+  !*** ./resources/js/pages/Dashboard/Activities.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Home */ "./resources/js/pages/Home.js");
+/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Contact */ "./resources/js/pages/Contact.js");
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Login */ "./resources/js/pages/Login.js");
+/* harmony import */ var _Registration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Registration */ "./resources/js/pages/Registration.js");
+/* harmony import */ var _redux_actions_authActions_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/actions/authActions.js */ "./resources/js/redux/actions/authActions.js");
+
+
+
+
+
+
+
+
+
+
+function Activites(props) {
+  var user = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(function (store) {
+    return store.user;
+  });
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// console.log(user);
+  });
+  return (
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Activities"))
+  );
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Activites);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Dashboard/ComingEvents.js":
+/*!******************************************************!*\
+  !*** ./resources/js/pages/Dashboard/ComingEvents.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _redux_actions_authActions_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../redux/actions/authActions.js */ "./resources/js/redux/actions/authActions.js");
+
+
+
+
+
+function ComingEvents(props) {
+  var user = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (store) {
+    return store.user;
+  });
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// console.log(user);
+  });
+  return (
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "ComingEvents"))
+  );
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (ComingEvents);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Dashboard/Listings.js":
+/*!**************************************************!*\
+  !*** ./resources/js/pages/Dashboard/Listings.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Home */ "./resources/js/pages/Home.js");
+/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Contact */ "./resources/js/pages/Contact.js");
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Login */ "./resources/js/pages/Login.js");
+/* harmony import */ var _Registration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Registration */ "./resources/js/pages/Registration.js");
+/* harmony import */ var _redux_actions_authActions_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/actions/authActions.js */ "./resources/js/redux/actions/authActions.js");
+
+
+
+
+
+
+
+
+
+
+function Listings(props) {
+  var user = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(function (store) {
+    return store.user;
+  });
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// console.log(user);
+  });
+  return (
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Properties"))
+  );
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Listings);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Dashboard/Notifications.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/pages/Dashboard/Notifications.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Home */ "./resources/js/pages/Home.js");
+/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Contact */ "./resources/js/pages/Contact.js");
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Login */ "./resources/js/pages/Login.js");
+/* harmony import */ var _Registration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Registration */ "./resources/js/pages/Registration.js");
+/* harmony import */ var _redux_actions_authActions_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/actions/authActions.js */ "./resources/js/redux/actions/authActions.js");
+
+
+
+
+
+
+
+
+
+
+function Notifications(props) {
+  var user = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(function (store) {
+    return store.user;
+  });
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// console.log(user);
+  });
+  return (
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Notifications"))
+  );
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Notifications);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Dashboard/Opportunities.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/pages/Dashboard/Opportunities.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Home */ "./resources/js/pages/Home.js");
+/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Contact */ "./resources/js/pages/Contact.js");
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Login */ "./resources/js/pages/Login.js");
+/* harmony import */ var _Registration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Registration */ "./resources/js/pages/Registration.js");
+/* harmony import */ var _redux_actions_authActions_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/actions/authActions.js */ "./resources/js/redux/actions/authActions.js");
+
+
+
+
+
+
+
+
+
+
+function Opportunities(props) {
+  var user = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(function (store) {
+    return store.user;
+  });
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// console.log(user);
+  });
+  return (
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Opportunities"))
+  );
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Opportunities);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Dashboard/Parties.js":
+/*!*************************************************!*\
+  !*** ./resources/js/pages/Dashboard/Parties.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Home */ "./resources/js/pages/Home.js");
+/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Contact */ "./resources/js/pages/Contact.js");
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Login */ "./resources/js/pages/Login.js");
+/* harmony import */ var _Registration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Registration */ "./resources/js/pages/Registration.js");
+/* harmony import */ var _redux_actions_authActions_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/actions/authActions.js */ "./resources/js/redux/actions/authActions.js");
+
+
+
+
+
+
+
+
+
+
+function Parties(props) {
+  var user = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(function (store) {
+    return store.user;
+  });
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// console.log(user);
+  });
+  return (
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Parties"))
+  );
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Parties);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Dashboard/PreviousDeals.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/pages/Dashboard/PreviousDeals.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Home */ "./resources/js/pages/Home.js");
+/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Contact */ "./resources/js/pages/Contact.js");
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Login */ "./resources/js/pages/Login.js");
+/* harmony import */ var _Registration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Registration */ "./resources/js/pages/Registration.js");
+/* harmony import */ var _redux_actions_authActions_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/actions/authActions.js */ "./resources/js/redux/actions/authActions.js");
+
+
+
+
+
+
+
+
+
+
+function PreviousDeals(props) {
+  var user = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(function (store) {
+    return store.user;
+  });
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// console.log(user);
+  });
+  return (
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PreviousDeals"))
+  );
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (PreviousDeals);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Dashboard/index.js":
+/*!***********************************************!*\
+  !*** ./resources/js/pages/Dashboard/index.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _Activities__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Activities */ "./resources/js/pages/Dashboard/Activities.js");
+/* harmony import */ var _Parties__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Parties */ "./resources/js/pages/Dashboard/Parties.js");
+/* harmony import */ var _Listings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Listings */ "./resources/js/pages/Dashboard/Listings.js");
+/* harmony import */ var _ComingEvents__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ComingEvents */ "./resources/js/pages/Dashboard/ComingEvents.js");
+/* harmony import */ var _Opportunities__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Opportunities */ "./resources/js/pages/Dashboard/Opportunities.js");
+/* harmony import */ var _PreviousDeals__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./PreviousDeals */ "./resources/js/pages/Dashboard/PreviousDeals.js");
+/* harmony import */ var _Notifications__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Notifications */ "./resources/js/pages/Dashboard/Notifications.js");
+
+
+
+
+
+
+
+
+
+
+
+function Dashboard(props) {
+  var user = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (store) {
+    return store.user;
+  });
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
+
+  var _useRouteMatch = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useRouteMatch"])(),
+      path = _useRouteMatch.path,
+      url = _useRouteMatch.url;
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// console.log(user);
+  });
+  return (
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "".concat(url, "/parties")
+    }, "Parties")),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "".concat(url, "/activities")
+    }, "Activities")),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "".concat(url, "/properties")
+    }, "Properties")),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "".concat(url, "/coming_events")
+    }, "Coming Events")),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "".concat(url, "/notifications")
+    }, "Notifications")),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "".concat(url, "/opportunities")
+    }, "Opportunities")),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "".concat(url, "/previous_deals")
+    }, "Previous Deals")))),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      path: "".concat(url, "/parties")
+    },
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Parties__WEBPACK_IMPORTED_MODULE_4__["default"], null)),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      path: "".concat(url, "/activities")
+    },
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Activities__WEBPACK_IMPORTED_MODULE_3__["default"], null)),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      path: "".concat(url, "/properties")
+    },
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Properties, null)),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      path: "".concat(url, "/coming_events")
+    },
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ComingEvents__WEBPACK_IMPORTED_MODULE_6__["default"], null)),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      path: "".concat(url, "/notifications")
+    },
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Notifications__WEBPACK_IMPORTED_MODULE_9__["default"], null)),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      path: "".concat(url, "/opportunities")
+    },
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Opportunities__WEBPACK_IMPORTED_MODULE_7__["default"], null)),
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      path: "".concat(url, "/previous_deals")
+    },
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PreviousDeals__WEBPACK_IMPORTED_MODULE_8__["default"], null))))
+  );
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Dashboard);
 
 /***/ }),
 
