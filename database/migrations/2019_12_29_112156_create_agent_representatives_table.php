@@ -15,7 +15,7 @@ class CreateAgentRepresentativesTable extends Migration
     {
         Schema::create('agent_representatives', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('agent_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('address');
             $table->string('nic');
@@ -27,7 +27,7 @@ class CreateAgentRepresentativesTable extends Migration
 
             // primary key foreign key relations
 
-            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

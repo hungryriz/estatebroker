@@ -17,10 +17,10 @@ class CreateActivitiesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('listing_id');
             $table->unsignedBigInteger('party_id');
-            $table->unsignedBigInteger('agent_id');
+            $table->unsignedBigInteger('user_id');
             $table->dateTime('activity_time');
             $table->string('status');
-            $table->unique(['listing_id','party_id','agent_id','activity_time']);
+            $table->unique(['listing_id','party_id','user_id','activity_time']);
             $table->text('notes');
             $table->timestamps();
 
@@ -28,7 +28,7 @@ class CreateActivitiesTable extends Migration
 
             $table->foreign('listing_id')->references('id')->on('listings')->onDelete('cascade');
             $table->foreign('party_id')->references('id')->on('parties')->onDelete('cascade');
-            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }

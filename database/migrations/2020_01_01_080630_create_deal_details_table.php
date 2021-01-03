@@ -18,12 +18,12 @@ class CreateDealDetailsTable extends Migration
             $table->text('notes');
             $table->unsignedBigInteger('deal_id');
             $table->unsignedBigInteger('party_id');
-            $table->unsignedBigInteger('agent_id');
+            $table->unsignedBigInteger('user_id');
 
             // primary key foreign key relations
             $table->foreign('deal_id')->references('id')->on('deals')->onDelete('cascade');
             $table->foreign('party_id')->references('id')->on('parties')->onDelete('cascade');
-            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

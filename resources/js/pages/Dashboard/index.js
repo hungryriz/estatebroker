@@ -28,7 +28,7 @@ function Dashboard(props) {
                         <Link to={`${url}/activities`}>Activities</Link>
                     </li>
                     <li>
-                        <Link to={`${url}/properties`}>Properties</Link>
+                        <Link to={`${url}/listings`}>Listings</Link>
                     </li>
                     <li>
                         <Link to={`${url}/coming_events`}>Coming Events</Link>
@@ -52,8 +52,8 @@ function Dashboard(props) {
                 <Route path={`${url}/activities`}>
                     <Activities />
                 </Route>
-                <Route path={`${url}/properties`}>
-                    <Properties />
+                <Route path={`${url}/listings/:page?`}>
+                    <Listings />
                 </Route>
                 <Route path={`${url}/coming_events`}>
                     <ComingEvents />

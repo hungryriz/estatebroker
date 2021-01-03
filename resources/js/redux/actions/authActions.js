@@ -24,7 +24,7 @@ function userRegister(formData) {
             data: formData
         })
         .then(function (response) {
-            dispatch({ type: 'USER_LOGIN', email : response.data.email, accessToken: response.data.accessToken });
+            dispatch({ type: 'USER_LOGIN', ...response, accessToken: response.data.accessToken });
         })
         .catch(function (error) {
             dispatch({ type: 'USER_LOGOUT' });
@@ -37,17 +37,14 @@ function userLogout() {
     return (dispatch) => {
         // Return promise with success and failure actions
         const store = JSON.parse(window.localStorage.getItem('store'))
-        const config = {
+        return axios({
+            method: 'post',
+            url: '/api/auth/logout',
             headers: { Authorization: `Bearer ${store.user.accessToken}` }
-        }
-        return axios.post(
-            '/api/auth/logout',
-            [],
-            config
-        )
+        })
         .then(  
             response => dispatch({ type: 'USER_LOGOUT' }),
-            err => dispatch({ type: 'USER_SET_MESSAGE', message: err.message})
+            err => dispatch({ type: 'USER_LOGOUT' }),
         );
     };
 }

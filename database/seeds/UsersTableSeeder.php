@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AgentsTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,8 +11,9 @@ class AgentsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        factory(App\Model\Agent::class, 10)->create()->each(
+		//
+		factory(App\Model\Scope::class, 1)->create();
+        factory(App\Model\User::class, 10)->create()->each(
         	function ($agent) {
 				$agent->agentRepresentatives()
 					->save(factory(App\Model\AgentRepresentative::class)->make());

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch, useHistory } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import Home from '../pages/Home';
@@ -9,6 +9,7 @@ import Login from '../pages/Login';
 import Registration from '../pages/Registration';
 import { userLogout } from '../redux/actions/authActions.js';
 import Dashboard from '../pages/Dashboard';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Menu(props) {
     const user = useSelector(store => store.user);
@@ -45,7 +46,7 @@ function Menu(props) {
                             :
                             (
                                 <li>
-                                    <Link onClick={(e) => { e.preventDefault(); dispatch(userLogout()) } } to="/">Logout</Link>
+                                    <Link onClick={(e) => { dispatch(userLogout()); }} to="/">Logout</Link>
                                 </li>
                             )
                         }
@@ -63,7 +64,7 @@ function Menu(props) {
                     <Registration />
                 </Route>
                 <Route path="/dashboard">
-                    <Dashboard />
+                    { user.loggedin ? <Dashboard /> : <Login /> }
                 </Route>
                 <Route path="/">
                     <Home />

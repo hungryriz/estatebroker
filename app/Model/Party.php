@@ -12,7 +12,7 @@ class Party extends Model
         return $this->hasMany('App\Model\PartyRepresentative');
     }
 
-    public function listsings()
+    public function listings()
     {
         return $this->belongsTo('App\Model\Listsing', 'party_interested_listings','party_id','listing_id')
         	->withTimestamps();;
@@ -20,7 +20,7 @@ class Party extends Model
 
     public function agent()
     {
-        return $this->belongsTo('App\Model\Agent');
+        return $this->belongsTo('App\Model\User');
     }
 
     public function activities()

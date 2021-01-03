@@ -1,5 +1,9 @@
 import React from 'react'
 
-return default function() {
-    
+export default function(props) {
+ return(
+     <>
+        
+     </>
+ )
 }

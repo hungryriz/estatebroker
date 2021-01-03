@@ -14,7 +14,7 @@ class DealDetail extends Model
 
     public function agents()
     {
-        return $this->belongsTo('App\Model\Agent');
+        return $this->belongsTo('App\Model\User');
     }
 
     public function deal()

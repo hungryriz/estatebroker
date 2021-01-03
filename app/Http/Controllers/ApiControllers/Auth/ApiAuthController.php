@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use App\User;
+use App\Model\User;
 
 class ApiAuthController extends Controller
 {
@@ -32,8 +32,8 @@ class ApiAuthController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:6|confirmed',
+                'email' => 'required|string|email|max:255',
+                'password' => 'required|string|min:6',
             ]
         );
 
@@ -43,8 +43,8 @@ class ApiAuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
         if($user) {
-            if(Hash::check($password, $request->user()->password)) {
-                $accessToken = $request->user()->createToken('Personal Access Tokens ID#' . $user->id)->accessToken;
+            if(Hash::check($password, $user->password)) {
+                $accessToken = $user->createToken('Personal Access Tokens ID#' . $user->id)->accessToken;
                 return response(
                     [
                         'accessToken' => $accessToken,
@@ -83,17 +83,17 @@ class ApiAuthController extends Controller
             );
         }
 
+        $requestArray = $request->all();
+
         $name = $request->name;
         $email = $request->email;
         $password = Hash::make($request->password);
-        $rememberToken = Str::random(10);
+
+        $requestArray['password'] = $password;
+        $requestArray['remember_token'] = Str::random(10);
+
         $user = User::create(
-            [
-                'name' => $name,
-                'email' => $email,
-                'password' => $password,
-                'rememberToken' => $rememberToken
-            ]
+            $requestArray
         );
 
         $accessToken = $user->createToken('Personal Access Tokens ID#' . $user->id)->accessToken;

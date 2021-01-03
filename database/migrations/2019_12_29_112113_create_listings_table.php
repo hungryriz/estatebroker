@@ -23,13 +23,13 @@ class CreateListingsTable extends Migration
             $table->string('state');
             $table->string('country');
             $table->unsignedBigInteger('party_id')->nullable();
-            $table->unsignedBigInteger('agent_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             // primary key foreign key relations
 
             $table->foreign('party_id')->references('id')->on('parties')->onDelete('cascade');
-            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -38,8 +38,5 @@ class CreateListingsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('listings');
-    }
+
 }
