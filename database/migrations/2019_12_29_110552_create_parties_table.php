@@ -13,18 +13,19 @@ class CreatePartiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('parties', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('name');
-            $table->string('phone');
-            $table->text('address');
-            $table->string('city');
-            $table->string('state');
-            $table->string('country');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('parties')) {
+            Schema::create('parties', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->unsignedBigInteger('user_id')->nullable();
+                $table->string('name');
+                $table->string('phone');
+                $table->text('address');
+                $table->string('city');
+                $table->string('state');
+                $table->string('country');
+                $table->timestamps();
+            });
+        }
     }
-
 
 }

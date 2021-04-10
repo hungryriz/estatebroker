@@ -13,22 +13,22 @@ class CreatePartyInterestedListingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('party_interested_listings', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('interest_id');
-            $table->unsignedBigInteger('party_id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('listing_id');
-            $table->string('status');
-            $table->unique(['listing_id','party_id','user_id','interest_id'], 'party_interested_listings_lid_pid_aid_iid_unique');
+        if(!Schema::hasTable('party_purpose_listings')) {
+            Schema::create('party_purpose_listings', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->unsignedBigInteger('party_id');
+                $table->unsignedBigInteger('user_id');
+                $table->unsignedBigInteger('listing_id');
+                $table->enum('purpose', config('settings.purpose'));
+                $table->unique(['listing_id','party_id','user_id','purpose'], 'party_pupose_listings_lid_pid_aid_iid_unique');
 
-            $table->timestamps();
+                $table->timestamps();
 
-            $table->foreign('listing_id', 'party_interested_listings_lid_foreign')->references('id')->on('listings')->onDelete('cascade');
-            $table->foreign('party_id','party_interested_listings_pid_foreign')->references('id')->on('parties')->onDelete('cascade');
-            $table->foreign('user_id', 'party_interested_listings_aid_foreign')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('interest_id', 'party_interested_listings_iid_foreign')->references('id')->on('interests')->onDelete('cascade');
-        });
+                $table->foreign('listing_id', 'party_purpose_listings_lid_foreign')->references('id')->on('listings')->onDelete('cascade');
+                $table->foreign('party_id','party_purpose_listings_pid_foreign')->references('id')->on('parties')->onDelete('cascade');
+                $table->foreign('user_id', 'party_purpose_listings_aid_foreign')->references('id')->on('users')->onDelete('cascade');
+            });
+        }
     }
 
     /**
@@ -38,6 +38,6 @@ class CreatePartyInterestedListingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('party_interested_listings');
+        Schema::dropIfExists('party_purpose_listings');
     }
 }

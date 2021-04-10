@@ -4,6 +4,8 @@ namespace App\Http\Controllers\ApiControllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Party;
+use Illuminate\Support\Facades\Log;
 
 class PartyController extends Controller
 {
@@ -12,9 +14,11 @@ class PartyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        Log::info(__FILE__);
+        $userId = $request->user() ? $request->user()->id : '';
+        return Party::where('user_id', $userId)->get()->toArray();
     }
 
     /**

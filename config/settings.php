@@ -24,6 +24,13 @@ return [
 	    			'parties.index' => 'Parties',
     			]
     		]
-		]
+		  ]
     ],
+
+    'purpose' => [
+      'sale',
+      'wanted-for-rent',
+      'buy',
+      'rent'
+    ]
 ];

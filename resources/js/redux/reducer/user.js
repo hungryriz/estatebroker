@@ -18,7 +18,8 @@ export default function user(state = userInitialState, action) {
         return state;
       case 'USER_LOGOUT':
         state = { 
-          ...state, email: '', 
+          ...state, 
+          email: '', 
           loggedin: false, 
           message: 'User logged out', 
           accessToken: ''

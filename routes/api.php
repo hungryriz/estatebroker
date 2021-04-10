@@ -33,4 +33,5 @@ Route::middleware('auth:api')->post('/auth/logout', 'ApiControllers\Auth\ApiAuth
 
 Route::middleware('auth:api')->group(function(){
     Route::apiResource('listings', 'ApiControllers\ListingController');
+    Route::apiResource('parties', 'ApiControllers\PartyController');
 });

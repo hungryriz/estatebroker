@@ -1,77 +1,78 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { useParams, useHistory, useRouteMatch } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import { makeRequest } from '../../components/utils'
-import ReactDataGrid from 'react-data-grid';
-import ReactPaginate from 'react-paginate';
-import 'react-data-grid/dist/react-data-grid.css';
+import { useTable, usePagination } from 'react-table'
+import Table from '../../components/Table'
+import { makeStyles } from '@material-ui/core/styles';
+import Form from '../../components/Form'
+import { Button, Typography, Modal }  from '@material-ui/core';
+import AddNewListingForm from '../Dashboard/Listing/AddNewListingForm'
 
 function Listings(props) {
-    const user = useSelector(store => store.user);
-    const dispatch = useDispatch();
-    const { url } = useRouteMatch();
-    const [rows, setRows] = useState();
-    const [columns, setColumns] = useState();
-    const [currentpage, setCurrentpage] = useState(1);
-    const [totalpages, setTotalpages] = useState(0);
-    const params = useParams();
-    const history = useHistory();
+    const user = useSelector(store => store.user)
+    const dispatch = useDispatch()
+    const { url } = useRouteMatch()
+    const params = useParams()
+    const history = useHistory()
+    const [rows, setRows] = useState()
+    const [columns, setColumns] = useState()
+    const [totalpages, setTotalpages] = useState(0)
+    const [rowUpdatedOrDeleted, setRowUpdatedOrDeleted] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
+    const [formType, setFormType] = useState('PUT')
+    const [editformdata, setEditformdata] = useState()
+    const [editformid, setEditformid] = useState()
+    const [loading, setLoading] = useState(false)
+    const [openaddlistform, setOpenaddlistform] = useState(false)
 
-    const handlePageClick = (data) => {
-        let nextpage = parseInt(data.selected) + 1
-        history.push(url.replace(/[0-9]/g, '').replace(/\/$/, "") + '/' + nextpage)
-        setCurrentpage(nextpage)
+    const onDelete = (row) => {
+        rows.splice(row.row.id, 1)
+        setRows(rows)
+        setRowUpdatedOrDeleted(!rowUpdatedOrDeleted)
     }
 
-    const getCellActions = (column, row) => {
-        const cellActions = {
-            row_actions: [
-                {
-                    icon: <div> Delete</div>,
-                    callback: () => {
-                        alert("Deleting");
-                    }
-                },
-                {
-                    icon: <div> Options</div>,
-                    actions: [
-                        {
-                            text: "Option 1",
-                            callback: () => {
-                                alert("Option 1 clicked");
-                            }
-                        },
-                        {
-                            text: "Option 2",
-                            callback: () => {
-                                alert("Option 2 clicked");
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
+    const onEdit = () => {
+        setModalOpen(true)
+    }
 
-        return cellActions[column.key] ? cellActions[column.key] : null;
+    const modalClose = () => {
+        setModalOpen(false)
+    }
+
+    const getEditFormData = useMemo(() => {
+        return editformdata
+    });
+
+    const addEditFormData = useCallback((data) => {
+        setEditformdata(data)
+    });
+
+    const openAddListForm = () => {
+        setOpenaddlistform(true);
+    }
+
+    const closeAddListForm = () => {
+        setOpenaddlistform(false);
     }
 
     useEffect(() => {
         let mounted = true;
         let page = params && params.page ? params.page : 1;
-        makeRequest(`/api/listings?page=${page}`, 'get')
+        makeRequest('/api/listings', 'get')
         .then(function(response){
-            var columns = []
-            Object.keys(response.data.data[0])
+            var columnsData = []
+            var rowsData = response.data;
+            Object.keys(rowsData[0])
             .forEach(function(key){
-                columns.push({ key: key, name: key });
+                columnsData.push({ Header: key, accessor: key });
             });
-            columns.push( {key: 'row_actions', name: 'Actions'} );
             if(mounted) {
-                setTotalpages(response.data.last_page)
-                setRows(response.data.data)
-                setColumns(columns)
+                setTotalpages(response.data.length)
+                setRows(rowsData)
+                setColumns(columnsData)
             }
         })
         .catch(function(){
@@ -79,40 +80,85 @@ function Listings(props) {
         });
 
         return () => mounted = false
-    }, [currentpage]);
+    }, [rowUpdatedOrDeleted]);
+
+
+    
     return (
         <>
-         {
-            rows && columns && rows.length && columns.length ?
+                <Button variant="contained" color="primary" onClick={openAddListForm} disabled={loading}>
+                    {loading ? 'Loading...' : 'Add Property'}
+                </Button>
+            {
+                rows && columns && rows.length && columns.length ?
                 (
                     <>
-                        <ReactDataGrid
-                            columns={columns}
-                            rows={rows}
-                            rowsCount={3}
-                            minHeight={150} 
-                            getCellActions={getCellActions} 
-                            enableCellSelect={false} />
-                        <ReactPaginate
-                            previousLabel={'previous'}
-                            nextLabel={'next'}
-                            breakLabel={'...'}
-                            breakClassName={'break-me'}
-                            pageCount={totalpages}
-                            marginPagesDisplayed={2}
-                            pageRangeDisplayed={5}
-                            onPageChange={handlePageClick}
-                            containerClassName={'pagination'}
-                            subContainerClassName={'pages pagination'}
-                            activeClassName={'active'}
+                        <Table 
+                            columns={columns} 
+                            data={rows}  
+                            deleteButtonSetting={ {enabled: true, url: '/api/listings/'} }
+                            deleteAction={onDelete}
+                            editButtonSetting={{enabled: true, url: '/api/listings/'}}
+                            modalOpen= {() => setModalOpen(true)}
+                            addEditFormData={ (data) => addEditFormData(data) }
+                            editFormSetting={{
+                                formHeading : 'Lists Form', 
+                                requestUrl : '/api/listings/',
+                                isModal: true,
+                                getFormType: ()=> { return formType },
+                                modalClose: () => {},
+                                isShowModal: () => {return modalOpen}
+                            }}
                         />
+                        <Modal open={modalOpen}
+                            onClose={() => {}}
+                            aria-labelledby="simple-modal-title"
+                            aria-describedby="simple-modal-description"
+                        >
+                            <div>
+                                <Form formHeading={'Lists Form'}
+                                    requestUrl={ '/api/listings' }
+                                    getFormType={ ()=> { return formType } }
+                                    modalClose={ () => modalClose() } 
+                                    isShowModal={ () => {return modalOpen} }
+                                    getEditFormData={ () => getEditFormData }
+                                />
+                            </div>
+                        </Modal>
+                        <Modal open={openaddlistform}
+                            onClose={() => {}}
+                            aria-labelledby="simple-modal-title"
+                            aria-describedby="simple-modal-description"
+                        >
+                            <div>
+                                <AddNewListingForm closeAddListForm = { () => closeAddListForm() } />
+                            </div>
+                        </Modal>
                     </>
                 )
                 : 
                 (
-                    <></>
+                    <>
+                        <Modal open={modalOpen}
+                            onClose={() => {}}
+                            aria-labelledby="simple-modal-title"
+                            aria-describedby="simple-modal-description"
+                        >
+                            <div>
+                                <Form 
+                                    formHeading={'Lists Form'}
+                                    requestUrl={ '/api/listings' }
+                                    getFormType={ ()=> { return formType } }
+                                    modalClose={ () => modalClose() } 
+                                    isShowModal={ () => { return modalOpen } }
+                                    getEditFormData={ () => getEditFormData }
+                                />
+                            </div>
+                        </Modal>
+                        <Typography>No Listings for you</Typography>
+                    </>
                 )
-         }
+            }
         </>
     )
 }

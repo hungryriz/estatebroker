@@ -14,11 +14,10 @@ class PartiesTableSeeder extends Seeder
         //
         $parties = App\Model\Party::all();
 
-        $parties->each(
-        	function ($party) {
-				$party->partyRepresentatives()
-					->save(factory(App\Model\PartyRepresentative::class)->make());
-			}
-		);
+        $parties->each(function ($party) {
+            $party
+                ->partyRepresentatives()
+                ->save(factory(App\Model\PartyRepresentative::class)->make());
+        });
     }
 }

@@ -66,4 +66,7 @@ USER www
 
 # Expose port 9010 and start php-fpm server
 EXPOSE 9000
-ENTRYPOINT ["sh","./docker/php/docker-entrypoint.sh"]
+CMD ["php-fpm"]
+ 
+
+#ENTRYPOINT ["sh","./docker/php/docker-entrypoint.sh"]

@@ -30,8 +30,15 @@
         "sass-loader": "7.*"
     },
     "dependencies": {
+        "@date-io/date-fns": "^2.10.6",
         "@fortawesome/fontawesome-free": "^5.12.0",
-        "react-data-grid": "^7.0.0-canary.33",
-        "react-paginate": "^7.0.0"
+        "@material-ui/core": "^4.11.2",
+        "@material-ui/icons": "^4.11.2",
+        "@material-ui/pickers": "^3.2.10",
+        "date-fns": "^2.0.0-beta.5",
+        "final-form": "^4.20.1",
+        "final-form-material-ui": "^0.3.0",
+        "react-final-form": "^6.5.2",
+        "react-table": "^7.6.2"
     }
 }

@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { userRegister, setUserMessage } from '../redux/actions/authActions.js';
 
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
 
 function Registration() {
     const fields = [
@@ -66,7 +69,7 @@ function Registration() {
                     return (
                     <div key={i}>
                         {field.name.charAt(0).toUpperCase() + field.name.slice(1)}<br />
-                        <input {...FormField(field)} />
+                        <FormField fieldObjectsetting={field} />
                     </div>
                     );
                 })
@@ -78,17 +81,20 @@ function Registration() {
     );
 }
 
-function FormField(fieldObjectsetting){
-    const [value, setValue] = useState(fieldObjectsetting.value);
+function FormField(props){
+    const [value, setValue] = useState(props.fieldObjectsetting.value);
     function handleInput(e){
         setValue(e.target.value);
     }
-    return {
-        ...fieldObjectsetting,
+    let fieldObjectsetting = {
+        ...props.fieldObjectsetting,
         value,
         onChange: handleInput,
-        key: fieldObjectsetting.name
+        key: props.fieldObjectsetting.name
     }
+
+    return <TextField {...fieldObjectsetting} />
+
 }
 
 export default Registration;

@@ -1,4 +1,4 @@
-function makeRequest(url, method = 'post', addHeaders = true) {
+function makeRequest(url, method = 'post', data = {} , addHeaders = true) {
 
     let config = {
         url: url,
@@ -9,11 +9,17 @@ function makeRequest(url, method = 'post', addHeaders = true) {
     let store
     if(addHeaders) {
         store = JSON.parse(window.localStorage.getItem('store'))
-        headers = { Authorization: `Bearer ${store.user.accessToken}` }
+        headers = {   
+            'enctype' : 'multipart/form-data',
+            Authorization: `Bearer ${store.user.accessToken}`
+        }
+        config.headers = headers
     }
 
-    config.headers = headers
-    return axios(config)
+    if(data) {
+        config.data = data
+    }
 
+    return axios(config)
 }
 export { makeRequest }

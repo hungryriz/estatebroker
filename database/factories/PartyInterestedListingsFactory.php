@@ -5,10 +5,10 @@
 use App\Model\PartyInterestedListing;
 use Faker\Generator as Faker;
 
-$factory->define(PartyInterestedListing::class, function (Faker $faker) {
+$factory->define(PartyPurposeListing::class, function (Faker $faker) {
     return [
         //
-        'status' => 'status',
+        'purpose' => array_rand(config('settings.purpose')),
         'created_at' => Carbon\Carbon::now()->format('Y-m-d H:i:s'),
         'updated_at' => Carbon\Carbon::now()->format('Y-m-d H:i:s'),
     ];

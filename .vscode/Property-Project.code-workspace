@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"search.quickOpen.includeHistory": false,
+		"files.autoSave": "afterDelay",
+		"files.autoSaveDelay": 5,
+		"editor.tabCompletion": "on"
+	}
+}

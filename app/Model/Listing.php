@@ -6,7 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Listing extends Model
 {
-    //
+    protected $fillable = [
+        'id', 
+        'purpose' , 
+        'property_type' , 
+        'property_type_name', 
+        'location',
+        'city', 
+        'property_title', 
+        'description',        
+        'price',
+        'land_area',
+        'unit',
+        'bedrooms',
+        'bathrooms',
+        'images',
+        'expires_after',
+        'user_id',
+        'party_id'
+    ];
+
     public function agent() 
     {
     	return $this->belongsTo('App\Model\User');
@@ -14,7 +33,7 @@ class Listing extends Model
 
     public function parties()
     {
-        return $this->belongsTo('App\Model\Party', 'party_interested_listings','listing_id','party_id')
+        return $this->hasMany('App\Model\Party', 'party_interested_listings','listing_id','party_id')
         	->withTimestamps();;
     }
 
@@ -26,6 +45,11 @@ class Listing extends Model
     public function deal()
     {
         return $this->hasOne('App\Model\Deal');
+    }
+
+    public function features()
+    {
+        return $this->hasOne('App\Model\PropertyFeatures');
     }
 
 }

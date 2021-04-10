@@ -1,0 +1,19 @@
+version: 2
+options:
+compose-file-path: 'docker-compose.yml'
+compose-dev-file-path: 'docker-compose-dev.yml'
+verbose: false
+cli_mode: 'auto'
+max_attempt: 5
+project_root: 'pwd'
+syncs:
+  app-code-sync:
+    sync_userid: '1000'
+    src: '.'
+sync_strategy: 'unison'
+sync_excludes: [
+    '.vscode', 
+    'node_modules',
+    '.gitignore',
+    '.gitattributes',
+]

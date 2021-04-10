@@ -1,0 +1,51 @@
+version: '3.3'
+services:
+    php-fpm:
+      build:
+        context: .
+        dockerfile: ./docker/php/Dockerfile
+      container_name: php-fpm
+      volumes:
+        - app-code-sync:/var/www/html/
+        - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      links:
+        - mariadb
+      networks:
+        - laravel-network
+    nginx:
+      build:
+        context: .
+        dockerfile: ./docker/nginx/Dockerfile
+      container_name: nginx
+      volumes:
+        - app-code-sync:/var/www/html/
+        - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+        - ./docker/certbot/conf:/etc/letsencrypt
+      ports:
+        - "8000:80"
+        - "443:443"
+      links:
+        - php-fpm
+      networks:
+        - laravel-network
+    mariadb:
+      image: mariadb
+      container_name: mariadb
+      ports:
+        - "33060:3306"
+      environment:
+        MYSQL_DATABASE: estatebroker
+        MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      volumes:
+        - mariadb:/var/lib/mysql/
+        - ./docker/mariadb/conf.d/docker.cnf:/etc/mysql/conf.d/docker.cnf
+      networks:
+        - laravel-network
+volumes:
+  mariadb:
+    driver: local
+  app-code-sync:
+    external: true
+networks:
+  laravel-network:
+    driver: bridge

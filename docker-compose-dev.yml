@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+    php-fpm:
+      volumes:
+        - app-code-sync:/var/www/html:nocopy
+volumes:
+  app-code-sync:
+    external: true
+

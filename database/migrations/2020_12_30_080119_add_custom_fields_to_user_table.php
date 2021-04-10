@@ -30,10 +30,12 @@ class AddCustomFieldsToUserTable extends Migration
     }
 
     public function down()
-    {
+    {        
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('listings');
         Schema::dropIfExists('parties');
         Schema::dropIfExists('users');
+        Schema::enableForeignKeyConstraints();
     }
 
 }
