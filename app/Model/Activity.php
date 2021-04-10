@@ -19,7 +19,7 @@ class Activity extends Model
 
     public function agent() 
     {
-    	return $this->belongsTo('App\Model\Agent');
+    	return $this->belongsTo('App\Model\User');
     }
 
     public function activityFiles()

@@ -14,7 +14,7 @@ class ListingsTableSeeder extends Seeder
     {
         //
 	    $parties = App\Model\Party::all();
-	    $agents = App\Model\Agent::all();
+	    $agents = App\Model\User::all();
 	    $faker = Faker::create();
         foreach($parties as $party) {
     		foreach($agents as $agent) {
@@ -27,7 +27,7 @@ class ListingsTableSeeder extends Seeder
 			        'state' => 'state',
 			        'country' => $faker->country,
 			        'party_id' => $party->id,
-			        'agent_id' => $agent->id,
+			        'user_id' => $agent->id,
 			        'created_at' => Carbon\Carbon::now()->format('Y-m-d H:i:s'),
 			        'updated_at' => Carbon\Carbon::now()->format('Y-m-d H:i:s'),
         		]);

@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'WebControllers\HomeController@index');
+// Route::get('/', 'WebControllers\HomeController@index');
 
 
 // Route::get('/home', function () {
@@ -23,13 +23,18 @@ Route::get('/', 'WebControllers\HomeController@index');
 // });
 
 
-
 //  Route::get('login', 'Auth\LoginController@index')->name('login');
-Auth::routes();
+
 
 //Route::get('api/activity', 'ApiControllers\ActivityController@index')->name('api/activity');
 
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::any( '/', function() {
+//     return view('home');
+// });
+// Route::view('*', 'home');
+Route::get("{path?}", "WebControllers\HomeController@index")->where('path', '.+');
+// Route::any( '(.*)', function( $page ){
+//     return view('home');
+// });
+// Route::get('/', 'WebControllers\HomeController@index')->name('home');

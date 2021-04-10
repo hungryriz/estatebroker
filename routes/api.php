@@ -27,3 +27,10 @@ use Illuminate\Http\Request;
 
 
 Route::middleware('auth:api')->get('/activity', 'ApiControllers\ActivityController@index');
+Route::post('/auth/login', 'ApiControllers\Auth\ApiAuthController@login')->name('api.login');
+Route::post('/auth/register', 'ApiControllers\Auth\ApiAuthController@register')->name('api.register');
+Route::middleware('auth:api')->post('/auth/logout', 'ApiControllers\Auth\ApiAuthController@logout')->name('api.logout');
+
+Route::middleware('auth:api')->group(function(){
+    Route::apiResource('listings', 'ApiControllers\ListingController');
+});

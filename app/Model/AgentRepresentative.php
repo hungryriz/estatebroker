@@ -9,6 +9,6 @@ class AgentRepresentative extends Model
     //
     public function agent() 
     {
-    	return $this->belongsTo('App\Model\Agent');
+    	return $this->belongsTo('App\Model\User');
     }
 }

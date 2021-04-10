@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch, useHistory } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import Home from '../pages/Home';
@@ -8,13 +8,15 @@ import Contact from '../pages/Contact';
 import Login from '../pages/Login';
 import Registration from '../pages/Registration';
 import { userLogout } from '../redux/actions/authActions.js';
+import Dashboard from '../pages/Dashboard';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Menu(props) {
     const user = useSelector(store => store.user);
     const dispatch = useDispatch();
     useEffect(() => {
-        console.log(user);
-        console.log('menu');
+        // console.log(user);
+        // console.log('menu');
     });
     return (
         <Router>
@@ -25,6 +27,9 @@ function Menu(props) {
                     </li>
                     <li>
                         <Link to="/contactus">Contact Us</Link>
+                    </li>
+                    <li>
+                        <Link to="/dashboard">Dashboard</Link>
                     </li>
                         {
                             !user.loggedin ? 
@@ -41,7 +46,7 @@ function Menu(props) {
                             :
                             (
                                 <li>
-                                    <Link onClick={(e) => { e.preventDefault(); dispatch(userLogout()) } } to="/">Logout</Link>
+                                    <Link onClick={(e) => { dispatch(userLogout()); }} to="/">Logout</Link>
                                 </li>
                             )
                         }
@@ -57,6 +62,9 @@ function Menu(props) {
                 </Route>
                 <Route path="/registration">
                     <Registration />
+                </Route>
+                <Route path="/dashboard">
+                    { user.loggedin ? <Dashboard /> : <Login /> }
                 </Route>
                 <Route path="/">
                     <Home />

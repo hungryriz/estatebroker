@@ -4,6 +4,8 @@ namespace App\Http\Controllers\ApiControllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Listing;
+use Illuminate\Support\Facades\Log;
 
 class ListingController extends Controller
 {
@@ -12,9 +14,10 @@ class ListingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $userId = $request->user() ? $request->user()->id : '';
+        return Listing::where('user_id', $userId)->paginate(10);
     }
 
     /**

@@ -15,7 +15,7 @@ class CreatePartiesTable extends Migration
     {
         Schema::create('parties', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('agent_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('name');
             $table->string('phone');
             $table->text('address');
@@ -26,13 +26,5 @@ class CreatePartiesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('parties');
-    }
+
 }

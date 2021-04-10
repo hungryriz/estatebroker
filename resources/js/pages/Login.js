@@ -1,62 +1,76 @@
 import React, { useState, useEffect  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { userLogin, userLogout } from '../redux/actions/authActions.js';
+import { userLogin , setUserMessage } from '../redux/actions/authActions.js';
 
  
 function Login(props) {
 
   const user = useSelector(store => store.user)
   const dispatch = useDispatch(); 
-  const username = useFormInput('');
-  const password = useFormInput('');
+  const email = useFormInput('email');
+  const password = useFormInput('password');
 
   const history = useHistory();
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
+    // componentDidMount
+    useEffect(function(){
+        dispatch(setUserMessage(''));
+        console.log(__filename);
+    },[]);
 
-  useEffect(() => {
-    function handleStatusChange(status) {
-      //setIsOnline(status.isOnline);
-    }
-    console.log(user);
-
-  });
+    useEffect(() => {
+        if(user.loggedin === true) {
+            history.push('/dashboard');
+        } else {
+            console.log(__filename);
+        }
+    }, [user.loggedin]);
 
  
   // handle button click of login form
-  const handleLogin = () => {
-    dispatch(userLogin())
-    history.push('/home');
+  const handleLogin = async () => {
+    setLoading(true);
+    var email = document.getElementById('login_email').value;
+    var password = document.getElementById('login_password').value;
+    try {
+        await dispatch(userLogin(email, password));
+        setLoading(false);
+    } catch(e) {
+        setMessage(e);
+    }
   }
  
   return (
     <div>
       Login<br /><br />
       <div>
-        Username<br />
-        <input type="text" {...username} autoComplete="new-password" />
+        Email<br />
+        <input type="text"  {...email} autoComplete="new-password" id="login_email"/>
       </div>
       <div style={{ marginTop: 10 }}>
         Password<br />
-        <input type="password" {...password} autoComplete="new-password" />
+        <input type="password" {...password} autoComplete="new-password" id="login_password" />
       </div>
-      {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
+      <><small style={{ color: 'red' }}>{user.message}</small><br /><br /></>
       <input type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
     </div>
   );
 }
  
-const useFormInput = initialValue => {
-  const [value, setValue] = useState(initialValue);
+const useFormInput = fieldname => {
+  const [value, setValue] = useState('');
  
   const handleChange = e => {
     setValue(e.target.value);
   }
+
   return {
     value,
-    onChange: handleChange
+    onChange: handleChange,
+    name: fieldname
   }
 }
  
